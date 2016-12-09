@@ -1,0 +1,12 @@
+.form-box {
+  & {
+    width: 100%;
+    max-width: 20rem;
+  }
+  > input,
+  > button {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.3em;
+  }
+}

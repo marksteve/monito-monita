@@ -1,0 +1,26 @@
+.steps-list {
+  & {
+    list-style: none;
+    padding: 0;
+    counter-reset: steps-list;
+  }
+  > li {
+    color: white;
+    margin-bottom: 1.3em;
+  }
+  > li:before {
+    vertical-align: middle;
+    content: counter(steps-list);
+    counter-increment: steps-list;
+    display: inline-block;
+    line-height: 3rem;
+    text-align: center;
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1.3rem;
+    background: #50E3C2;
+    color: #5C258D;
+    border-radius: 50%;
+    font-size: 1.414em;
+  }
+}
