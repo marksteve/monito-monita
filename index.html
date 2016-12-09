@@ -3,12 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="./app.css">
   <title>Monito Monita</title>
-  <script src="/vendor.js"></script>
-  <script src="/app.js"></script>
-  <script>require('js/app')</script>
 </head>
 <body>
   <div id="app"></div>
+  <script src="//www.gstatic.com/firebasejs/3.6.3/firebase.js"></script>
+  <script src="./vendor.js"></script>
+  <script src="./app.js"></script>
+  <script>
+  var config = {
+    apiKey: 'AIzaSyChRBq6XdBtrkdRmsiCbKUKYe6pgM96xTQ',
+    authDomain: 'monito-monita-60137.firebaseapp.com',
+    databaseURL: 'https://monito-monita-60137.firebaseio.com',
+    storageBucket: 'monito-monita-60137.appspot.com',
+    messagingSenderId: '303009904745'
+  }
+  firebase.initializeApp(config)
+  window.db = firebase.database()
+  </script>
+  <script>require('js/app')</script>
 </body>
 </html>
