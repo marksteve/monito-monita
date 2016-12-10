@@ -18,7 +18,7 @@ p, ul, ol { margin: 0 0 1.3em; }
 a { color: inherit; }
 
 h1, h2, h3, h4 {
-  font-family: Libre Baskville, serif;
+  font-family: Libre Baskerville, serif;
   margin: 1.414em 0 0.5em;
   line-height: 1.2;
   color: white;
@@ -70,6 +70,12 @@ input:focus {
 }
 
 button:disabled { opacity: 0.5; }
+
+pre {
+  background: rgba(92, 37, 141, 0.5);
+  padding: 1rem;
+  overflow-x: auto;
+}
 
 main {
   width: 100%;

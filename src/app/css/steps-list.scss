@@ -9,6 +9,7 @@
     margin-bottom: 1.3em;
   }
   > li:before {
+    font-family: Libre Baskerville, serif;
     vertical-align: middle;
     content: counter(steps-list);
     counter-increment: steps-list;

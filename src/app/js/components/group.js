@@ -119,6 +119,11 @@ export default {
         </div>
       : null}
 
+      <div>
+        <p><small>Invite your friends by sharing this url:</small></p>
+        <pre><code>{window.location.href}</code></pre>
+      </div>
+
     </main>
   }
 
