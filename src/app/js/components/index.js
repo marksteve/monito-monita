@@ -38,11 +38,11 @@ export default {
     return <main>
       <div class='intro-text'>
         <h1>Monito Monita</h1>
-        <p>Monito Monita is what we call <a href='https://en.wikipedia.org/wiki/Secret_Santa'>Secret Santa</a> in the Philippines</p>
+        <p>Monito Monita is what we call <a href='https://en.wikipedia.org/wiki/Secret_Santa'>Secret Santa</a> in the Philippines. This app allows you to organize your own Monito Monita in three easy steps:</p>
         <ol class='steps-list'>
           <li>Create a group</li>
           <li>Invite your friends</li>
-          <li>Match!</li>
+          <li>Draw matches!</li>
         </ol>
         <p><small>Made by <a href='https://marksteve.com'>marksteve</a></small></p>
       </div>
