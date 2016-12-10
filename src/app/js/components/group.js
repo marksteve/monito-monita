@@ -119,7 +119,7 @@ export default {
         </div>
       : null}
 
-      <div>
+      <div class='invite-link'>
         <p><small>Invite your friends by sharing this url:</small></p>
         <pre><code>{window.location.href}</code></pre>
       </div>

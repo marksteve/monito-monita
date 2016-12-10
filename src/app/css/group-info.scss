@@ -10,3 +10,7 @@
     font-size: 1.414em;
   }
 }
+
+@media (max-width: 480px) {
+  .group-info { width: 100%; }
+}

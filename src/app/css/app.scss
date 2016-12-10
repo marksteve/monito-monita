@@ -71,16 +71,9 @@ input:focus {
 
 button:disabled { opacity: 0.5; }
 
-pre {
-  background: rgba(170, 58, 56, 0.5);
-  border-bottom: 1px solid;
-  padding: 1rem;
-  overflow-x: auto;
-}
-
 main {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 0 3rem 0 6rem;
   box-sizing: border-box;
   display: flex;
@@ -89,3 +82,11 @@ main {
   flex-wrap: wrap;
 }
 
+footer {
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  main { padding: 3rem; }
+  footer { margin: 3rem 0; }
+}

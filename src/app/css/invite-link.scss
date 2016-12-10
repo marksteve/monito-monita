@@ -1,0 +1,12 @@
+.invite-link {
+  > pre {
+    background: rgba(170, 58, 56, 0.5);
+    border-bottom: 1px solid;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .invite-link { width: 100%; }
+}

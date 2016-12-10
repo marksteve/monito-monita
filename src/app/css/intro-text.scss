@@ -8,3 +8,13 @@
   }
 }
 
+@media (max-width: 480px) {
+  .intro-text {
+    & {
+      max-width: 100%;
+    }
+    > h1 {
+      line-height: 1;
+    }
+  }
+}

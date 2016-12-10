@@ -44,7 +44,6 @@ export default {
           <li>Invite your friends</li>
           <li>Draw matches!</li>
         </ol>
-        <p><small>Made by <a href='https://marksteve.com'>marksteve</a></small></p>
       </div>
       {this.user
       ? <form class='form-box' onSubmit={this.createGroup}>
@@ -64,6 +63,9 @@ export default {
           Login with Facebook
         </button>
       </div>}
+      <footer>
+        <small>Made by <a href='https://marksteve.com'>marksteve</a></small>
+      </footer>
     </main>
   }
 
