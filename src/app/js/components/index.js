@@ -57,7 +57,7 @@ export default {
         </button>
         <small>Logged in as {this.user.displayName} &mdash; <a href='#' onClick={this.logout}>Logout</a></small>
       </div>
-      : <div>
+      : <div class='form-box'>
         <button onClick={this.login}>
           Login with Facebook
         </button>
