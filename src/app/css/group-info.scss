@@ -1,0 +1,13 @@
+.group-info {
+  & {
+    width: 30%;
+  }
+  > h1 {
+    margin-bottom: 0;
+    font-size: 1.414em;
+  }
+  > .name {
+    margin: 0 0 1.3em;
+    font-size: 1.414em;
+  }
+}

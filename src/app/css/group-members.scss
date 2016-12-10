@@ -1,0 +1,17 @@
+.group-members {
+  & {
+    list-style: none;
+    padding: 0;
+    width: 30%;
+  }
+  > li {
+    color: white;
+    margin-bottom: 1.3em;
+  }
+  > li > img {
+    width: 40px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 1rem;
+  }
+}
