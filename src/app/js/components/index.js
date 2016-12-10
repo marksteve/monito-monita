@@ -19,7 +19,8 @@ export default {
       e.preventDefault()
       firebase.auth().signOut()
     },
-    createGroup () {
+    createGroup (e) {
+      e.preventDefault()
       const newGroup = window.db.ref('groups').push({
         name: this.groupName,
         owner: this.user.uid
@@ -29,6 +30,7 @@ export default {
           displayName: this.user.displayName,
           photoURL: this.user.photoURL
         })
+      this.$router.push(newGroup.key)
     }
   },
 
@@ -45,18 +47,18 @@ export default {
         <p><small>Made by <a href='https://marksteve.com'>marksteve</a></small></p>
       </div>
       {this.user
-      ? <div class='form-box'>
+      ? <form class='form-box' onSubmit={this.createGroup}>
         <input
           placeholder='Group name'
           onInput={e => {
             this.groupName = e.target.value
           }}
           value={this.groupName} />
-        <button onClick={this.createGroup} disabled={!this.groupName}>
+        <button type='submit' disabled={!this.groupName}>
           Create group
         </button>
         <small>Logged in as {this.user.displayName} &mdash; <a href='#' onClick={this.logout}>Logout</a></small>
-      </div>
+      </form>
       : <div class='form-box'>
         <button onClick={this.login}>
           Login with Facebook
