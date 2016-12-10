@@ -1,12 +1,12 @@
 body, input, button {
   font: 18px Work Sans, sans-serif;
-  color: #50E3C2;
+  color: #00CFD6;
 }
 
 body {
-  background: #5C258D; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #5C258D, #4389A2); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #5C258D, #4389A2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #2F7336; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #2F7336 , #AA3A38); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #2F7336 , #AA3A38); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-attachment: fixed;
   line-height: 1.45;
   margin: 0;
@@ -52,27 +52,28 @@ input, button {
 
 input {
   background: transparent;
-  border-bottom: 1px solid #50E3C2;
+  border-bottom: 1px solid #00CFD6;
   color: white;
 }
 
-::-webkit-input-placeholder { color: #50E3C2; }
+::-webkit-input-placeholder { color: #00CFD6; }
 
 button {
-  background: #50E3C2;
-  color: #5C258D;
+  background: #00CFD6;
+  color: #AA3A38;
   cursor: pointer;
 }
 
 input:focus {
   outline: none;
-  background: rgba(92, 37, 141, 0.5);
+  background: rgba(170, 58, 56, 0.5);
 }
 
 button:disabled { opacity: 0.5; }
 
 pre {
-  background: rgba(92, 37, 141, 0.5);
+  background: rgba(170, 58, 56, 0.5);
+  border-bottom: 1px solid;
   padding: 1rem;
   overflow-x: auto;
 }
