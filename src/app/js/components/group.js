@@ -1,5 +1,18 @@
 const { firebase } = window
 
+// https://www.frankmitchell.org/2015/01/fisher-yates/
+function shuffle (array) {
+  let i = 0
+  let j = 0
+  let temp = null
+  for (i = array.length - 1; i > 0; i -= 1) {
+    j = Math.floor(Math.random() * (i + 1))
+    temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+  }
+}
+
 export default {
 
   props: ['user'],
@@ -10,18 +23,24 @@ export default {
       members: {},
       membersList: [],
       userIsMember: false,
-      userIsOwner: false
+      userIsOwner: false,
+      userMatch: null
     }
   },
 
   created () {
-    this.fetchData()
+    this.fetchGroup()
+    this.fetchMatch()
   },
 
   watch: {
-    '$route': 'fetchData',
-    'user': 'checkMembership',
-    'members': 'checkMembership'
+    user () {
+      this.fetchMembership()
+      this.fetchMatch()
+    },
+    members () {
+      this.fetchMembership()
+    }
   },
 
   computed: {
@@ -41,8 +60,10 @@ export default {
       e.preventDefault()
       firebase.auth().signOut()
     },
-    fetchData () {
+    fetchGroup () {
       const { groupId } = this.$route.params
+
+      // Fetch group info
       window.db.ref('groups').child(groupId)
         .on('value', snapshot => {
           if (snapshot.exists()) {
@@ -50,28 +71,47 @@ export default {
             this.userIsOwner = this.user && this.group.owner === this.user.uid
           }
         })
+
+      // Fetch group
       window.db.ref('members').child(groupId)
         .on('value', snapshot => {
           this.members = snapshot.val()
         })
     },
-    checkMembership () {
+    fetchMembership () {
       if (!this.user) return
       const { groupId } = this.$route.params
       window.db.ref('members').child(groupId).child(this.user.uid)
-        .once('value', snapshot => {
+        .on('value', snapshot => {
           this.userIsMember = snapshot.exists()
+        })
+    },
+    fetchMatch () {
+      if (!this.user) return
+      const { groupId } = this.$route.params
+      window.db.ref('matches').child(groupId).child(this.user.uid)
+        .on('value', snapshot => {
+          this.userMatch = snapshot.val()
         })
     },
     join () {
       const { groupId } = this.$route.params
       window.db.ref('members').child(groupId).child(this.user.uid)
         .set({
+          uid: this.user.uid,
           displayName: this.user.displayName,
           photoURL: this.user.photoURL
         })
     },
     drawMatches () {
+      const { groupId } = this.$route.params
+      let membersList = this.membersList.slice()
+      shuffle(membersList)
+      let i = 0
+      while (i < membersList.length) {
+        window.db.ref('matches').child(groupId).child(membersList[i++].uid)
+          .set(membersList[i % membersList.length])
+      }
     }
   },
 
@@ -93,7 +133,9 @@ export default {
       ? <div class='group-members'>
         <ul>
           {this.membersList.map(member => <li>
-            <img src={member.photoURL} />
+            <div class='photo'>
+              <img src={member.photoURL} />
+            </div>
             {member.displayName}
           </li>)}
         </ul>
@@ -105,10 +147,24 @@ export default {
       {this.group && this.membersList.length > 0
       ? this.user
         ? <div class='form-box'>
-          {this.userIsMember
-            ? (this.userIsOwner
+          {this.userMatch
+          ? this.userIsMember
+            ? <div class='user-match'>
+              <p>You've been matched with:</p>
+              <p>
+                <div class='photo'>
+                  <img src={this.userMatch.photoURL} />
+                </div>
+                <span class='name'>
+                  {this.userMatch.displayName}
+                </span>
+              </p>
+            </div>
+            : <p>Matches have been drawn! You can't join this group anymore :(</p>
+          : this.userIsMember
+            ? this.userIsOwner
               ? <button onClick={this.drawMatches}>Draw matches</button>
-              : <div>Wait for it...</div>)
+              : <div>Waiting for your match&hellip;</div>
             : <button onClick={this.join}>Join</button>}
           <small>Logged in as {this.user.displayName} &mdash; <a href='#' onClick={this.logout}>Logout</a></small>
         </div>

@@ -27,6 +27,7 @@ export default {
       })
       window.db.ref('members').child(newGroup.key).child(this.user.uid)
         .set({
+          uid: this.user.uid,
           displayName: this.user.displayName,
           photoURL: this.user.photoURL
         })

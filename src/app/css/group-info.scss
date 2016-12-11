@@ -2,12 +2,14 @@
   & {
     width: 30%;
   }
-  > h1 {
-    margin-bottom: 0;
+  > h1, > .name {
     font-size: 1.414em;
   }
+  > h1 {
+    margin-bottom: 0;
+  }
   > .name {
-    font-size: 1.414em;
+    margin-bottom: 1.3em;
   }
 }
 
