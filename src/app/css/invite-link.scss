@@ -5,8 +5,11 @@
     padding: 1rem;
     overflow-x: auto;
   }
+  > pre > code > a {
+    text-decoration: none;
+  }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1000px) {
   .invite-link { width: 100%; }
 }
