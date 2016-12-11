@@ -163,7 +163,9 @@ export default {
             : <p>Matches have been drawn! You can't join this group anymore :(</p>
           : this.userIsMember
             ? this.userIsOwner
-              ? <button onClick={this.drawMatches}>Draw matches</button>
+              ? this.membersList > 2
+                ? <button onClick={this.drawMatches}>Draw matches</button>
+                : <div>Waiting for other participants&hellip;</div>
               : <div>Waiting for your match&hellip;</div>
             : <button onClick={this.join}>Join</button>}
           <small>Logged in as {this.user.displayName} &mdash; <a href='#' onClick={this.logout}>Logout</a></small>
